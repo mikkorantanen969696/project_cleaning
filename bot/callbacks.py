@@ -1,13 +1,16 @@
+import asyncio
+import os
+import sys
 from aiogram import types, F
 from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
 
+# Добавляем корневую директорию проекта в Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from database.database import get_session
 from database.models import User, UserRole, Order, OrderStatus, City
-from handlers.admin_handlers import *
-from handlers.manager_handlers import *
-from handlers.cleaner_handlers import *
-from handlers.order_handlers import *
+from handlers import admin_handlers, manager_handlers, cleaner_handlers, order_handlers
 from utils.keyboards import get_manager_menu
 from datetime import datetime
 
@@ -32,69 +35,68 @@ async def callback_handle_menu(callback: CallbackQuery, state: FSMContext):
     
     await callback.answer()
 
-# Admin callbacks
 async def callback_admin_add_manager(callback: CallbackQuery, state: FSMContext):
-    await handlers.admin_handlers.callback_admin_add_manager(callback, state)
+    await admin_handlers.callback_admin_add_manager(callback, state)
 
 async def callback_admin_remove_manager(callback: CallbackQuery, state: FSMContext):
-    await handlers.admin_handlers.callback_admin_remove_manager(callback, state)
+    await admin_handlers.callback_admin_remove_manager(callback, state)
 
 async def callback_remove_manager(callback: CallbackQuery, state: FSMContext):
-    await handlers.admin_handlers.callback_remove_manager(callback, state)
+    await admin_handlers.callback_remove_manager(callback, state)
 
 async def callback_admin_stats(callback: CallbackQuery, state: FSMContext):
-    await handlers.admin_handlers.callback_admin_stats(callback, state)
+    await admin_handlers.callback_admin_stats(callback, state)
 
 async def callback_stats_general(callback: CallbackQuery, state: FSMContext):
-    await handlers.admin_handlers.callback_stats_general(callback, state)
+    await admin_handlers.callback_stats_general(callback, state)
 
 async def callback_stats_managers(callback: CallbackQuery, state: FSMContext):
-    await handlers.admin_handlers.callback_stats_managers(callback, state)
+    await admin_handlers.callback_stats_managers(callback, state)
 
 async def callback_admin_cities(callback: CallbackQuery, state: FSMContext):
-    await handlers.admin_handlers.callback_admin_cities(callback, state)
+    await admin_handlers.callback_admin_cities(callback, state)
 
 async def callback_admin_export(callback: CallbackQuery, state: FSMContext):
-    await handlers.admin_handlers.callback_admin_export(callback, state)
+    await admin_handlers.callback_admin_export(callback, state)
 
 async def callback_admin_back(callback: CallbackQuery, state: FSMContext):
-    await handlers.admin_handlers.callback_admin_back(callback, state)
+    await admin_handlers.callback_admin_back(callback, state)
 
 # Manager callbacks
 async def callback_invoice_order(callback: CallbackQuery, state: FSMContext):
-    await handlers.manager_handlers.callback_invoice_order(callback, state)
+    await manager_handlers.callback_invoice_order(callback, state)
 
 async def callback_pay_cleaner(callback: CallbackQuery, state: FSMContext):
-    await handlers.manager_handlers.callback_pay_cleaner(callback, state)
+    await manager_handlers.callback_pay_cleaner(callback, state)
 
 # Cleaner callbacks
 async def callback_photo_order(callback: CallbackQuery, state: FSMContext):
-    await handlers.cleaner_handlers.callback_photo_order(callback, state)
+    await cleaner_handlers.callback_photo_order(callback, state)
 
 async def callback_upload_photo(callback: CallbackQuery, state: FSMContext):
-    await handlers.cleaner_handlers.callback_upload_photo(callback, state)
+    await cleaner_handlers.callback_upload_photo(callback, state)
 
 # Order callbacks
 async def callback_take_order(callback: CallbackQuery, state: FSMContext):
-    await handlers.order_handlers.callback_take_order(callback, state)
+    await order_handlers.callback_take_order(callback, state)
 
 async def callback_reject_order(callback: CallbackQuery, state: FSMContext):
-    await handlers.order_handlers.callback_reject_order(callback, state)
+    await order_handlers.callback_reject_order(callback, state)
 
 async def callback_contact_manager(callback: CallbackQuery, state: FSMContext):
-    await handlers.order_handlers.callback_contact_manager(callback, state)
+    await order_handlers.callback_contact_manager(callback, state)
 
 async def callback_edit_order(callback: CallbackQuery, state: FSMContext):
-    await handlers.order_handlers.callback_edit_order(callback, state)
+    await order_handlers.callback_edit_order(callback, state)
 
 async def callback_cancel_order(callback: CallbackQuery, state: FSMContext):
-    await handlers.order_handlers.callback_cancel_order(callback, state)
+    await order_handlers.callback_cancel_order(callback, state)
 
 async def callback_order_details(callback: CallbackQuery, state: FSMContext):
-    await handlers.order_handlers.callback_order_details(callback, state)
+    await order_handlers.callback_order_details(callback, state)
 
 async def callback_refresh_orders(callback: CallbackQuery, state: FSMContext):
-    await handlers.order_handlers.callback_refresh_orders(callback, state)
+    await order_handlers.callback_refresh_orders(callback, state)
 
 # Order creation callbacks
 async def callback_process_city(callback: CallbackQuery, state: FSMContext):
