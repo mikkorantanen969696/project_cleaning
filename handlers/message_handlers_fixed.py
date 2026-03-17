@@ -49,7 +49,11 @@ async def handle_admin_stats(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.ADMIN:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.ADMIN:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -63,7 +67,11 @@ async def handle_admin_cities(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.ADMIN:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.ADMIN:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -74,7 +82,11 @@ async def handle_admin_finance(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.ADMIN:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.ADMIN:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -85,7 +97,11 @@ async def handle_admin_settings(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.ADMIN:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.ADMIN:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -96,7 +112,11 @@ async def handle_admin_help(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.ADMIN:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.ADMIN:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -120,7 +140,11 @@ async def handle_manager_create_order(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.MANAGER:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.MANAGER:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -137,7 +161,11 @@ async def handle_manager_orders(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.MANAGER:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.MANAGER:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -149,7 +177,11 @@ async def handle_manager_stats(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.MANAGER:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.MANAGER:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -161,7 +193,11 @@ async def handle_manager_invoice(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.MANAGER:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.MANAGER:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -173,7 +209,11 @@ async def handle_manager_payment(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.MANAGER:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.MANAGER:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -185,7 +225,11 @@ async def handle_manager_requisites(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.MANAGER:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.MANAGER:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -198,7 +242,11 @@ async def handle_cleaner_available(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.CLEANER:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.CLEANER:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -210,7 +258,11 @@ async def handle_cleaner_orders(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.CLEANER:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.CLEANER:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -222,7 +274,11 @@ async def handle_cleaner_photos(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.CLEANER:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.CLEANER:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -234,7 +290,11 @@ async def handle_cleaner_payment(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.CLEANER:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.CLEANER:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         
@@ -246,7 +306,11 @@ async def handle_cleaner_get_payment(message: Message, state: FSMContext):
     async with async_session() as session:
         user = await session.get(User, message.from_user.id)
         
-        if not user or user.role != UserRole.CLEANER:
+        if not user:
+            await message.answer("❌ Пользователь не найден. Нажмите /start")
+            return
+        
+        if user.role != UserRole.CLEANER:
             await message.answer("❌ У вас нет доступа к этой функции")
             return
         

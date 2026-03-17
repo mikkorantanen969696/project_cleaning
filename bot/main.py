@@ -343,7 +343,7 @@ async def main():
     register_callbacks(dp)
     
     # Register message handlers
-    from handlers.message_handlers import (
+    from handlers.message_handlers_fixed import (
         handle_admin_orders, handle_admin_users, handle_admin_stats,
         handle_admin_cities, handle_admin_finance, handle_admin_settings, handle_admin_help,
         handle_manager_create_order, handle_manager_orders, handle_manager_stats,
